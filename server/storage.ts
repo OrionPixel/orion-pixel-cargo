@@ -2968,33 +2968,7 @@ export class DatabaseStorage implements IStorage {
     }
   }
 
-  // Notification Methods
-  async createNotification(notification: {
-    userId: string;
-    title: string;
-    message: string;
-    type?: string;
-    actionUrl?: string;
-    relatedId?: number;
-    senderUserId?: string;
-  }) {
-    try {
-      const result = await db.insert(notifications).values({
-        userId: notification.userId,
-        title: notification.title,
-        message: notification.message,
-        type: notification.type || 'info',
-        actionUrl: notification.actionUrl,
-        relatedId: notification.relatedId,
-        senderUserId: notification.senderUserId,
-      }).returning();
-      
-      return result[0];
-    } catch (error) {
-      console.error('Error creating notification:', error);
-      throw error;
-    }
-  }
+
 
   async getUserNotifications(userId: string) {
     try {
@@ -3059,59 +3033,9 @@ export class DatabaseStorage implements IStorage {
     }
   }
 
-  async markNotificationAsRead(notificationId: number) {
-    try {
-      await db
-        .update(notifications)
-        .set({ isRead: true })
-        .where(eq(notifications.id, notificationId));
-      
-      return { success: true };
-    } catch (error) {
-      console.error('Error marking notification as read:', error);
-      throw error;
-    }
-  }
 
-  async markAllNotificationsAsRead(userId: string) {
-    try {
-      // Mark user's own notifications as read
-      await db
-        .update(notifications)
-        .set({ isRead: true })
-        .where(and(
-          eq(notifications.userId, userId),
-          eq(notifications.isRead, false)
-        ));
 
-      // Get user's agents (office accounts)
-      const userAgents = await db
-        .select({ id: users.id })
-        .from(users)
-        .where(and(
-          eq(users.parentUserId, userId),
-          eq(users.role, 'office')
-        ));
 
-      // If user has agents, mark their notifications as read too
-      if (userAgents.length > 0) {
-        const agentIds = userAgents.map(agent => agent.id);
-        
-        await db
-          .update(notifications)
-          .set({ isRead: true })
-          .where(and(
-            inArray(notifications.userId, agentIds),
-            eq(notifications.isRead, false)
-          ));
-      }
-
-      return { success: true };
-    } catch (error) {
-      console.error('Error marking all notifications as read:', error);
-      throw error;
-    }
-  }
 
   async getUnreadNotificationCount(userId: string) {
     try {
@@ -3269,20 +3193,6 @@ export class DatabaseStorage implements IStorage {
       return count[0]?.count || 0;
     } catch (error) {
       console.error('Error getting unread message count:', error);
-      throw error;
-    }
-  }
-
-  async markMessageAsRead(messageId: number) {
-    try {
-      await db
-        .update(messages)
-        .set({ isRead: true })
-        .where(eq(messages.id, messageId));
-      
-      return { success: true };
-    } catch (error) {
-      console.error('Error marking message as read:', error);
       throw error;
     }
   }
@@ -4408,56 +4318,9 @@ export class DatabaseStorage implements IStorage {
     }
   }
 
-  async getWarehouseAnalytics(userId: string): Promise<{
-    totalOperations: number;
-    stockIn: number;
-    stockOut: number;
-    lowStockItems: number;
-    inventoryValue: number;
-  }> {
-    try {
-      // Get all operations for analytics
-      const operations = await this.getWarehouseStockOperations(userId);
-      
-      const totalOperations = operations.length;
-      const stockIn = operations.filter(op => op.operationType === 'stock_in').length;
-      const stockOut = operations.filter(op => op.operationType === 'stock_out').length;
-      
-      // Get inventory for low stock analysis
-      const inventory = await this.getWarehouseInventory(userId);
-      const lowStockItems = inventory.filter(item => item.currentStock <= item.minStock).length;
-      
-      // Calculate estimated inventory value (simplified calculation)
-      const inventoryValue = inventory.reduce((sum, item) => sum + (item.currentStock * 100), 0);
-      
-      return {
-        totalOperations,
-        stockIn,
-        stockOut,
-        lowStockItems,
-        inventoryValue
-      };
-    } catch (error) {
-      console.error('Error getting warehouse analytics:', error);
-      throw error;
-    }
-  }
 
-  // Professional Warehouse Inventory Management
-  async getWarehouseInventory(userId: string): Promise<any[]> {
-    try {
-      const inventory = await db
-        .select()
-        .from(warehouseInventory)
-        .where(eq(warehouseInventory.userId, userId))
-        .orderBy(desc(warehouseInventory.lastUpdated));
-      
-      return inventory;
-    } catch (error) {
-      console.error('Error fetching warehouse inventory:', error);
-      return [];
-    }
-  }
+
+
 
   async addInventoryItem(inventoryData: any): Promise<any> {
     try {
