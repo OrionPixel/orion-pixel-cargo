@@ -1740,47 +1740,7 @@ export class DatabaseStorage implements IStorage {
     }
   }
 
-  async getVehicleById(vehicleId: number): Promise<any> {
-    try {
-      const [vehicle] = await db.select().from(vehicles).where(eq(vehicles.id, vehicleId));
-      return vehicle;
-    } catch (error) {
-      console.error("Error fetching vehicle by ID:", error);
-      return null;
-    }
-  }
 
-  async getAllUsers(): Promise<any[]> {
-    try {
-      return await db.select().from(users).orderBy(desc(users.createdAt));
-    } catch (error) {
-      console.error("Error fetching all users:", error);
-      return [];
-    }
-  }
-
-  async updateUser(userId: string, updates: any): Promise<any> {
-    try {
-      console.log('Updating user:', userId, 'with updates:', updates);
-      
-      const [updatedUser] = await db
-        .update(users)
-        .set({
-          ...updates,
-          updatedAt: new Date()
-        })
-        .where(eq(users.id, userId))
-        .returning();
-      
-      console.log('Updated user result:', updatedUser);
-      return updatedUser;
-    } catch (error) {
-      console.error("Error updating user:", error);
-      throw error;
-    }
-  }
-
-  async createUser(userData: any): Promise<any> {
     try {
       console.log('📊 STORAGE: Creating user with data:', {
         ...userData,
@@ -2191,14 +2151,7 @@ export class DatabaseStorage implements IStorage {
     };
   }
 
-  async updateUserSettings(userId: string, settings: { rateCalculationMethod?: string }): Promise<User> {
-    // For now, just return the user since the column doesn't exist yet
-    // This will be stored in local state/preferences instead
-    console.log("Rate calculation method setting would be:", settings.rateCalculationMethod);
-    const user = await this.getUser(userId);
-    if (!user) throw new Error("User not found");
-    return user;
-  }
+
 
   async getUserBillingDetails(userId: string): Promise<{
     subscriptionPlan: string;
@@ -2859,9 +2812,7 @@ export class DatabaseStorage implements IStorage {
     return logs.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
   }
 
-  async getActivityLogs(): Promise<any[]> {
-    return this.getSystemLogs();
-  }
+
 
   async getLogStats(): Promise<any> {
     const logs = await this.getSystemLogs();
