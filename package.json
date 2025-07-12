@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "NODE_ENV=development tsx server/index.ts",
-    "build": "cd client && npm install && npm run build && cd .. && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
-    "build:client": "cd client && npm install && npm run build",
+    "build": "cd client && npm install --legacy-peer-deps && npm run build && cd .. && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build:client": "cd client && npm install --legacy-peer-deps && npm run build",
     "build:server": "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "NODE_ENV=production node dist/index.js",
     "start:dev": "npm run build:client && NODE_ENV=development tsx server/index.ts",
