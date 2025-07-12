@@ -1,13 +1,21 @@
 import express, { type Express } from "express";
 import fs from "fs";
 import path from "path";
-import { createServer as createViteServer, createLogger } from "vite";
 import { type Server } from "http";
 import viteConfig from "../vite.config";
 import { nanoid } from "nanoid";
 
-const viteLogger = createLogger();
 const isProduction = process.env.NODE_ENV === 'production';
+
+function createLogger() {
+  return {
+    info: (msg: string) => console.log(msg),
+    warn: (msg: string) => console.warn(msg),
+    error: (msg: string, options?: any) => console.error(msg, options),
+  };
+}
+
+const viteLogger = createLogger();
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {
@@ -21,6 +29,14 @@ export function log(message: string, source = "express") {
 }
 
 export async function setupVite(app: Express, server: Server) {
+  if (isProduction) {
+    console.log('⚠️ Vite setup called in production - skipping');
+    return;
+  }
+
+  // Dynamic import of Vite only in development
+  const { createServer: createViteServer } = await import("vite");
+
   const serverOptions = {
     middlewareMode: true,
     hmr: { server },
@@ -40,8 +56,6 @@ export async function setupVite(app: Express, server: Server) {
     server: serverOptions,
     appType: "custom",
   });
-
-
 
   app.use(vite.middlewares);
   app.use("*", async (req, res, next) => {
