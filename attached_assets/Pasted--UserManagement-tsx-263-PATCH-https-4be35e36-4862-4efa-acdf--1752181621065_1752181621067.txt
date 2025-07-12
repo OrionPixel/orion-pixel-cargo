@@ -1,0 +1,45 @@
+
+UserManagement.tsx:263 
+            
+            
+           PATCH https://4be35e36-4862-4efa-acdf-d59f3295fb8a-00-20qcdjvd0iv8q.janeway.replit.dev/api/admin/users/b7b19d8b-aa2a-4859-9974-2be0007d706a/extend-trial 500 (Internal Server Error)
+window.fetch @ Network.js:219
+handleExtendTrial @ UserManagement.tsx:263
+onClick @ UserManagement.tsx:969
+callCallback2 @ chunk-RPCDYKBN.js?v=1b73d844:3674
+invokeGuardedCallbackDev @ chunk-RPCDYKBN.js?v=1b73d844:3699
+invokeGuardedCallback @ chunk-RPCDYKBN.js?v=1b73d844:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-RPCDYKBN.js?v=1b73d844:3736
+executeDispatch @ chunk-RPCDYKBN.js?v=1b73d844:7014
+processDispatchQueueItemsInOrder @ chunk-RPCDYKBN.js?v=1b73d844:7034
+processDispatchQueue @ chunk-RPCDYKBN.js?v=1b73d844:7043
+dispatchEventsForPlugins @ chunk-RPCDYKBN.js?v=1b73d844:7051
+(anonymous) @ chunk-RPCDYKBN.js?v=1b73d844:7174
+batchedUpdates$1 @ chunk-RPCDYKBN.js?v=1b73d844:18913
+batchedUpdates @ chunk-RPCDYKBN.js?v=1b73d844:3579
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=1b73d844:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=1b73d844:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=1b73d844:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=1b73d844:5449Understand this error
+Console.js:61 📡 Trial extension API response status: 500
+Console.js:61 ❌ Trial extension failed: {message: 'Failed to extend trial'}
+Mt.forEach.n.<computed> @ Console.js:61
+handleExtendTrial @ UserManagement.tsx:278
+await in handleExtendTrial
+onClick @ UserManagement.tsx:969
+callCallback2 @ chunk-RPCDYKBN.js?v=1b73d844:3674
+invokeGuardedCallbackDev @ chunk-RPCDYKBN.js?v=1b73d844:3699
+invokeGuardedCallback @ chunk-RPCDYKBN.js?v=1b73d844:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-RPCDYKBN.js?v=1b73d844:3736
+executeDispatch @ chunk-RPCDYKBN.js?v=1b73d844:7014
+processDispatchQueueItemsInOrder @ chunk-RPCDYKBN.js?v=1b73d844:7034
+processDispatchQueue @ chunk-RPCDYKBN.js?v=1b73d844:7043
+dispatchEventsForPlugins @ chunk-RPCDYKBN.js?v=1b73d844:7051
+(anonymous) @ chunk-RPCDYKBN.js?v=1b73d844:7174
+batchedUpdates$1 @ chunk-RPCDYKBN.js?v=1b73d844:18913
+batchedUpdates @ chunk-RPCDYKBN.js?v=1b73d844:3579
+dispatchEventForPluginEventSystem @ chunk-RPCDYKBN.js?v=1b73d844:7173
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-RPCDYKBN.js?v=1b73d844:5478
+dispatchEvent @ chunk-RPCDYKBN.js?v=1b73d844:5472
+dispatchDiscreteEvent @ chunk-RPCDYKBN.js?v=1b73d844:5449Understand this error
+Console.js:61 

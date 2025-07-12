@@ -1,0 +1,500 @@
+/* Import mobile responsive styles first */
+@import './styles/mobile-responsive.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 203 64% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 203 63% 51%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 202 63% 51%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* Fixed Website Theme Colors - Never Change */
+    --website-primary: #3094d1;
+    --website-secondary: #e7a293;
+    --website-accent: #cbdc65;
+    --website-text: #1a1a1a;
+    --website-background: #ffffff;
+
+    /* Admin Dashboard Isolated Theme Variables */
+    --admin-primary: 203 64% 50%;
+    --admin-secondary: 203 63% 51%;
+    --admin-accent: 202 63% 51%;
+  }
+
+  /* Admin Dashboard Scope - Isolated Theme Application */
+  .admin-dashboard-scope {
+    --primary: var(--admin-primary);
+    --secondary: var(--admin-secondary);
+    --accent: var(--admin-accent);
+  }
+
+  /* Public Website Scope - Fixed Theme Colors */
+  .website-scope {
+    --primary: 203 64% 50%;
+    --secondary: 203 63% 51%;
+    --accent: 202 63% 51%;
+
+    /* RealtimeColors Architecture - User Dashboard Default Colors */
+    --color-text-primary: #1a1a1a;
+    --color-background: #ffffff;
+    --color-primary-500: #3094d1;
+    --color-secondary-500: #3195d1;
+    --color-accent-500: #3296d1;
+    --color-surface: #ffffff;
+    --color-text-secondary: #6b7280;
+    --color-border: #e5e7eb;
+
+    /* Extended color scales for User Dashboard theme */
+    --color-primary-50: hsl(203, 62%, 98%);
+    --color-primary-100: hsl(203, 57%, 95%);
+    --color-primary-200: hsl(203, 52%, 90%);
+    --color-primary-300: hsl(203, 47%, 85%);
+    --color-primary-400: hsl(203, 47%, 68%);
+    --color-primary-600: hsl(203, 47%, 43%);
+    --color-primary-700: hsl(203, 47%, 33%);
+    
+    --color-secondary-50: hsl(11, 62%, 98%);
+    --color-secondary-100: hsl(11, 57%, 95%);
+    --color-secondary-200: hsl(11, 52%, 90%);
+    --color-secondary-300: hsl(11, 47%, 85%);
+    --color-secondary-400: hsl(11, 47%, 78%);
+    --color-secondary-600: hsl(11, 47%, 63%);
+    --color-secondary-700: hsl(11, 47%, 53%);
+    
+    --color-accent-50: hsl(69, 62%, 98%);
+    --color-accent-100: hsl(69, 57%, 95%);
+    --color-accent-200: hsl(69, 52%, 90%);
+    --color-accent-300: hsl(69, 47%, 85%);
+    --color-accent-400: hsl(69, 47%, 71%);
+    --color-accent-600: hsl(69, 47%, 51%);
+    --color-accent-700: hsl(69, 47%, 41%);
+    
+    /* Extended color scales for secondary */
+    --color-secondary-100: #f7f7f8;
+    --color-secondary-200: #eff0f1;
+    --color-secondary-300: #d7d8db;
+    --color-secondary-400: #bfc1c5;
+    --color-secondary-600: #8f9197;
+    --color-secondary-700: #77797f;
+    
+    /* Extended color scales for accent */
+    --color-accent-100: #fafafa;
+    --color-accent-200: #f5f5f5;
+    --color-accent-300: #ebebeb;
+    --color-accent-400: #e0e0e0;
+    --color-accent-600: #d1d1d1;
+    --color-accent-700: #c6c6c6;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Remove any gaps around announcement bar */
+  body, html {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Status badge styles */
+.status-booked {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300;
+}
+
+.status-picked {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300;
+}
+
+.status-in_transit, .status-in-transit {
+  @apply bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300;
+}
+
+.status-delivered {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300;
+}
+
+.status-cancelled {
+  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300;
+}
+
+/* Vehicle status styles */
+.vehicle-available {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300;
+}
+
+.vehicle-in_transit, .vehicle-in-transit {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300;
+}
+
+.vehicle-maintenance {
+  @apply bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300;
+}
+
+.booking-card-border {
+  border-left-color: hsl(var(--primary)) !important;
+}
+
+/* Theme Integration Classes */
+.theme-card {
+  background-color: hsl(var(--card)) !important;
+  border-color: hsl(var(--border)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}
+
+.theme-button-primary {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  border-color: hsl(var(--primary)) !important;
+}
+
+.theme-button-secondary {
+  background-color: hsl(var(--secondary)) !important;
+  color: hsl(var(--secondary-foreground)) !important;
+  border-color: hsl(var(--secondary)) !important;
+}
+
+.theme-button-accent {
+  background-color: hsl(var(--accent)) !important;
+  color: hsl(var(--accent-foreground)) !important;
+  border-color: hsl(var(--accent)) !important;
+}
+
+.theme-input {
+  background-color: hsl(var(--background)) !important;
+  border-color: hsl(var(--border)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.theme-input:focus {
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: 0 0 0 1px hsl(var(--primary)) !important;
+}
+
+/* TabsList visibility fixes */
+@layer components {
+  [data-radix-tabs-list] {
+    background: hsl(var(--primary) / 0.2) !important;
+    z-index: 50 !important;
+    position: relative !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border-radius: 8px !important;
+  }
+  
+  [data-radix-tabs-trigger] {
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  .tabs-list-fix {
+    background: hsl(var(--primary) / 0.2) !important;
+    z-index: 50 !important;
+    position: relative !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Force TabsList to be visible */
+  [role="tablist"] {
+    background: hsl(var(--primary) / 0.2) !important;
+    z-index: 50 !important;
+    position: relative !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border-radius: 8px !important;
+  }
+}
+
+/* Dashboard Button Cursor Fix */
+.dashboard-new-booking-btn,
+.dashboard-new-booking-btn *,
+.dashboard-new-booking-btn svg,
+.dashboard-new-booking-btn div,
+.dashboard-new-booking-btn h3,
+.dashboard-new-booking-btn p {
+  cursor: pointer !important;
+}
+
+/* Notification Badge Forced Visibility */
+.notification-badge-wrapper {
+  position: relative !important;
+  display: inline-block !important;
+  margin: 8px !important;
+  padding: 2px !important;
+}
+
+.notification-badge-forced {
+  position: absolute !important;
+  top: -6px !important;
+  right: -6px !important;
+  background-color: #dc2626 !important;
+  color: white !important;
+  border-radius: 10px !important;
+  min-width: 18px !important;
+  width: auto !important;
+  height: 18px !important;
+  padding: 0 5px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  z-index: 9999 !important;
+  pointer-events: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  border: 1px solid white !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  line-height: 1 !important;
+}
+
+/* BookingModal Custom Input Styling - White Background + Primary Border + Red Errors */
+.booking-modal-input {
+  background: #ffffff !important;
+  border: 2px solid hsl(var(--primary)) !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  transition: all 0.3s ease !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #2d3748 !important;
+  width: 100% !important;
+}
+
+.booking-modal-input:focus {
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15) !important;
+  outline: none !important;
+  background: #ffffff !important;
+}
+
+.booking-modal-input:hover {
+  border-color: hsl(var(--primary) / 0.8) !important;
+  background: #ffffff !important;
+}
+
+.booking-modal-textarea {
+  background: #ffffff !important;
+  border: 2px solid hsl(var(--primary)) !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  transition: all 0.3s ease !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #2d3748 !important;
+  width: 100% !important;
+  resize: vertical !important;
+}
+
+.booking-modal-textarea:focus {
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15) !important;
+  outline: none !important;
+  background: #ffffff !important;
+}
+
+.booking-modal-select-trigger {
+  background: #ffffff !important;
+  border: 2px solid hsl(var(--primary)) !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  transition: all 0.3s ease !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #2d3748 !important;
+  width: 100% !important;
+}
+
+.booking-modal-select-trigger:focus {
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15) !important;
+  outline: none !important;
+}
+
+.booking-modal-error {
+  color: #ef4444 !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  margin-top: 4px !important;
+}
+
+.booking-modal-button-primary {
+  background-color: hsl(var(--primary)) !important;
+  color: white !important;
+  border: 2px solid hsl(var(--primary)) !important;
+  border-radius: 6px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.booking-modal-button-primary:hover {
+  background-color: hsl(var(--primary) / 0.9) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Force cache bust */
+/* Cache buster v3 - Sun Jul  6 11:25:00 AM UTC 2025 - BOOKING FORM STYLING APPLIED */
+
+/* URGENT FORCE OVERRIDE - BookingModal All Input Fields */
+.booking-modal input,
+.booking-modal textarea,
+.booking-modal [role="combobox"],
+[data-booking-modal] input,
+[data-booking-modal] textarea,
+[data-booking-modal] [role="combobox"] {
+  background-color: #ffffff !important;
+  border: 2px solid hsl(var(--primary) / 0.5) !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  color: #2d3748 !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.booking-modal input:focus,
+.booking-modal textarea:focus,
+.booking-modal [role="combobox"]:focus,
+[data-booking-modal] input:focus,
+[data-booking-modal] textarea:focus,
+[data-booking-modal] [role="combobox"]:focus {
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15) !important;
+  outline: none !important;
+  background-color: #ffffff !important;
+}
+
+/* BookingModal All Error Messages - Strong Red Override */
+.booking-modal .text-destructive,
+.booking-modal [role="alert"],
+.booking-modal .text-red-500,
+.booking-modal .text-red-600,
+.booking-modal .text-sm.text-destructive,
+[data-booking-modal] .text-destructive,
+[data-booking-modal] [role="alert"],
+[data-booking-modal] .text-red-500,
+[data-booking-modal] .text-red-600,
+[data-booking-modal] .text-sm.text-destructive {
+  color: #ef4444 !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  margin-top: 4px !important;
+  display: block !important;
+}
+
+/* Required Field Error Messages - Extra Strong Red */
+.booking-modal p[role="alert"],
+.booking-modal span[role="alert"],
+.booking-modal div[role="alert"],
+[data-booking-modal] p[role="alert"],
+[data-booking-modal] span[role="alert"],
+[data-booking-modal] div[role="alert"] {
+  color: #dc2626 !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  margin-top: 6px !important;
+  line-height: 1.4 !important;
+}
+
+/* Form Field Error Messages - Ultimate Red Override */
+.booking-modal .form-message,
+.booking-modal .error-message,
+.booking-modal .field-error,
+[data-booking-modal] .form-message,
+[data-booking-modal] .error-message,
+[data-booking-modal] .field-error {
+  color: #dc2626 !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+}
+
+/* Cache Bust v5 - Input Border Opacity 50% */
+/* All error text inside booking modal */
+.booking-modal * {
+  --text-destructive: #ef4444 !important;
+}
+
+/* Cache Bust v5 - Border Opacity Update Applied */
+/* Input field border opacity set to 50% for better visual appearance */

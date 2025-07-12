@@ -1,0 +1,494 @@
+/* Mobile Responsive Styles for Logistics Dashboard */
+
+/* Global Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Ensure all buttons are touch-friendly */
+  .btn, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Card padding optimization for mobile */
+  .card {
+    padding: 0.75rem !important;
+  }
+
+  /* Table responsive scrolling */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Modal responsive adjustments */
+  .modal-content {
+    margin: 1rem;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Grid optimizations */
+  .grid {
+    gap: 0.75rem !important;
+  }
+
+  /* Form field spacing */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  /* Text size adjustments */
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3 { font-size: 1.125rem !important; }
+
+  /* Input field optimization */
+  input, select, textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Touch-friendly interactive elements */
+@media (pointer: coarse) {
+  .interactive {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* Dashboard specific mobile styles */
+.dashboard-mobile {
+  padding: 0.5rem;
+}
+
+.dashboard-mobile .stats-grid {
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.dashboard-mobile .action-buttons {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Booking form mobile optimization */
+.booking-form-mobile {
+  padding: 1rem;
+}
+
+.booking-form-mobile .form-row {
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.booking-form-mobile .form-section {
+  margin-bottom: 1.5rem;
+}
+
+/* Search bar mobile styles */
+.search-mobile {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Navigation mobile styles */
+.nav-mobile {
+  padding: 0.75rem;
+}
+
+.nav-mobile .nav-item {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* Authentication Pages Mobile Responsiveness */
+@media (max-width: 767px) {
+  /* Sign In and Register Page Form Inputs */
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="tel"] {
+    font-size: 16px !important; /* Prevent iOS zoom */
+    min-height: 44px; /* Touch target size */
+  }
+  
+  /* Touch-friendly buttons on auth pages */
+  .touch-manipulation {
+    touch-action: manipulation;
+    min-height: 44px;
+  }
+  
+  /* Responsive grid layout for name fields */
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  @media (min-width: 640px) {
+    .sm\\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  /* Mobile form spacing */
+  .space-y-4 > * + * {
+    margin-top: 0.75rem;
+  }
+  
+  .space-y-3 > * + * {
+    margin-top: 0.75rem;
+  }
+  
+  /* Hide desktop-only sections on auth pages */
+  .auth-desktop-only {
+    display: none !important;
+  }
+}
+
+/* User Dashboard Pages Mobile Responsiveness */
+@media (max-width: 1023px) {
+  /* Dashboard cards responsive grid */
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .dashboard-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Bookings page responsive */
+  .bookings-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Vehicles page responsive */
+  .vehicles-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Reports page responsive */
+  .reports-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Table responsive wrapper */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Card responsive padding */
+  .card-responsive {
+    padding: 1rem !important;
+    margin: 0.5rem 0 !important;
+  }
+  
+  /* Button responsive spacing */
+  .button-responsive-group {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  
+  .button-responsive-group > button {
+    width: 100% !important;
+  }
+  
+  /* Tab responsive */
+  .tabs-responsive {
+    flex-wrap: wrap !important;
+    gap: 0.25rem !important;
+  }
+  
+  .tabs-responsive > button {
+    flex: 1 1 auto !important;
+    min-width: fit-content !important;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Mobile specific dashboard adjustments */
+  .dashboard-mobile-spacing {
+    padding: 0.5rem !important;
+    margin: 0.25rem !important;
+  }
+  
+  /* Hide unnecessary elements on small screens */
+  .mobile-hide {
+    display: none !important;
+  }
+  
+  /* Stack elements vertically on mobile */
+  .mobile-stack {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Full width on mobile */
+  .mobile-full-width {
+    width: 100% !important;
+  }
+  
+  /* Text size adjustments for mobile */
+  .mobile-text-sm {
+    font-size: 0.875rem !important;
+  }
+  
+  .mobile-text-xs {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Footer responsive styles */
+.footer-responsive {
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Mobile Sidebar Collapse Button Fixes */
+@media (max-width: 768px) {
+  .sidebar-collapse-button {
+    max-width: 32px !important;
+    max-height: 32px !important;
+    padding: 4px !important;
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .sidebar-expanded-header {
+    max-width: calc(100vw - 64px) !important;
+    overflow: hidden !important;
+    padding-right: 8px !important;
+  }
+  
+  .sidebar-expanded-header .flex {
+    max-width: 100% !important;
+  }
+  
+  .sidebar-logo-text {
+    font-size: 0.875rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
+/* Mobile sidebar and main content z-index management */
+@media (max-width: 1023px) {
+  /* Force main content to always be above collapsed sidebar */
+  .main-content-area {
+    position: relative !important;
+    z-index: 10 !important;
+    background: rgb(249, 250, 251) !important;
+  }
+  
+  /* Sidebar mobile positioning */
+  .sidebar-mobile-expanded {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 50 !important;
+    height: 100vh !important;
+    transform: translateX(0) !important;
+  }
+  
+  .sidebar-mobile-collapsed {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1 !important;
+    height: 100vh !important;
+    transform: translateX(-100%) !important;
+  }
+}
+
+/* Comprehensive Dashboard Mobile Responsive Design */
+@media (max-width: 768px) {
+  /* Dashboard Cards Grid */
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+  
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Card Content Mobile */
+  .card-mobile {
+    padding: 0.75rem !important;
+  }
+  
+  .card-title-mobile {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+  
+  .card-content-mobile {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Button Groups Mobile */
+  .button-group-mobile {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+  }
+  
+  .button-mobile {
+    width: 100% !important;
+    padding: 0.75rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Search and Filter Mobile */
+  .search-filter-mobile {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  
+  .search-input-mobile {
+    width: 100% !important;
+  }
+  
+  /* Table Mobile - Convert to Cards */
+  .table-mobile {
+    display: none !important;
+  }
+  
+  .mobile-card-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  
+  .mobile-card-item {
+    background: white !important;
+    border-radius: 0.5rem !important;
+    padding: 1rem !important;
+    border: 1px solid rgb(229, 231, 235) !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Form Mobile */
+  .form-mobile {
+    gap: 0.75rem !important;
+  }
+  
+  .form-field-mobile {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  
+  .form-input-mobile {
+    width: 100% !important;
+    padding: 0.75rem !important;
+  }
+  
+  /* Modal Mobile */
+  .modal-mobile {
+    margin: 0.5rem !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+  
+  .modal-content-mobile {
+    padding: 1rem !important;
+  }
+  
+  /* Tabs Mobile */
+  .tabs-mobile {
+    width: 100% !important;
+  }
+  
+  .tabs-list-mobile {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) !important;
+    gap: 0.25rem !important;
+  }
+  
+  .tabs-trigger-mobile {
+    padding: 0.5rem 0.25rem !important;
+    font-size: 0.75rem !important;
+    text-align: center !important;
+  }
+  
+  /* Badge Mobile */
+  .badge-mobile {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+  
+  /* Icon Mobile */
+  .icon-mobile {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  
+  /* Text Mobile */
+  .text-mobile-sm {
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
+  }
+  
+  .text-mobile-base {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+  
+  .text-mobile-lg {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+  }
+  
+  /* Spacing Mobile */
+  .space-mobile-sm {
+    gap: 0.5rem !important;
+  }
+  
+  .space-mobile-md {
+    gap: 0.75rem !important;
+  }
+  
+  .space-mobile-lg {
+    gap: 1rem !important;
+  }
+  
+  /* Padding Mobile */
+  .p-mobile-sm {
+    padding: 0.5rem !important;
+  }
+  
+  .p-mobile-md {
+    padding: 0.75rem !important;
+  }
+  
+  .p-mobile-lg {
+    padding: 1rem !important;
+  }
+}
+
+/* Tablet Responsive */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .button-group-tablet {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+  
+  .card-tablet {
+    padding: 1rem !important;
+  }
+}
