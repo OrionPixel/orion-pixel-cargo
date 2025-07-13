@@ -156,25 +156,8 @@ app.use((req, res, next) => {
     isRender: isRender
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
-  if (!isProduction) {
-    console.log('🛠️ Development mode: Setting up Vite');
-    try {
-      const { setupVite } = await import("./vite.js");
-      await setupVite(app, server);
-    } catch (error) {
-      console.error('❌ Failed to setup Vite:', error);
-      // Fallback to static serving
-      try {
-        const { serveStatic } = await import("./static.js");
-        serveStatic(app);
-      } catch (staticError) {
-        console.error('❌ Failed to serve static files:', staticError);
-      }
-    }
-  } else {
+  // CRITICAL: Production server configuration - serve static files in production
+  if (isProduction) {
     console.log('🚀 Production mode: Serving static files');
     try {
       const { serveStatic } = await import("./static.js");
@@ -195,6 +178,15 @@ app.use((req, res, next) => {
           </html>
         `);
       });
+    }
+  } else {
+    console.log('🛠️ Development mode: Using static files');
+    try {
+      const { serveStatic } = await import("./static.js");
+      serveStatic(app);
+      console.log('✅ Static files served in development');
+    } catch (error) {
+      console.error('❌ Failed to serve static files:', error);
     }
   }
 
