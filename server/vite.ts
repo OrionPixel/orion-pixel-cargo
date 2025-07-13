@@ -2,7 +2,6 @@ import express, { type Express } from "express";
 import fs from "fs";
 import path from "path";
 import { type Server } from "http";
-import viteConfig from "../vite.config";
 import { nanoid } from "nanoid";
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -34,8 +33,9 @@ export async function setupVite(app: Express, server: Server) {
     return;
   }
 
-  // Dynamic import of Vite only in development
+  // Dynamic import of Vite and viteConfig only in development
   const { createServer: createViteServer } = await import("vite");
+  const viteConfig = await import("../vite.config");
 
   const serverOptions = {
     middlewareMode: true,
@@ -44,7 +44,7 @@ export async function setupVite(app: Express, server: Server) {
   };
 
   const vite = await createViteServer({
-    ...viteConfig,
+    ...viteConfig.default,
     configFile: false,
     customLogger: {
       ...viteLogger,
