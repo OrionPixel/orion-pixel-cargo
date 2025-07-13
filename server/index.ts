@@ -1,8 +1,10 @@
 import 'dotenv/config';
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
 import { initializeEventHub } from "./eventHub.js";
+
+// Remove top-level vite imports to prevent bundling in production
+// const { setupVite, serveStatic, log } = await import("./vite");
 
 const app = express();
 
@@ -97,7 +99,8 @@ app.use((req, res, next) => {
         logLine = logLine.slice(0, 79) + "…";
       }
 
-      log(logLine);
+      // Use console.log instead of imported log function
+      console.log(logLine);
     }
   });
 
@@ -158,10 +161,23 @@ app.use((req, res, next) => {
   // doesn't interfere with the other routes
   if (!isProduction) {
     console.log('🛠️ Development mode: Setting up Vite');
-    await setupVite(app, server);
+    try {
+      const { setupVite } = await import("./vite.js");
+      await setupVite(app, server);
+    } catch (error) {
+      console.error('❌ Failed to setup Vite:', error);
+      // Fallback to static serving
+      try {
+        const { serveStatic } = await import("./static.js");
+        serveStatic(app);
+      } catch (staticError) {
+        console.error('❌ Failed to serve static files:', staticError);
+      }
+    }
   } else {
     console.log('🚀 Production mode: Serving static files');
     try {
+      const { serveStatic } = await import("./static.js");
       serveStatic(app);
       console.log('✅ Static files served successfully');
     } catch (error) {
@@ -197,12 +213,6 @@ app.use((req, res, next) => {
     }
     if (process.env.REPLIT_URL) {
       console.log(`🌐 Replit URL: ${process.env.REPLIT_URL}`);
-    }
-    
-    // Production health check
-    if (isProduction) {
-      console.log(`🏥 Health Check Available: ${isRender ? 'https://cargorepo-4.onrender.com' : 'http://localhost:' + PORT}/api/health`);
-      console.log(`📊 Financial Dashboard: ${isRender ? 'https://cargorepo-4.onrender.com' : 'http://localhost:' + PORT}/api/financial/dashboard`);
     }
   });
 })();
